@@ -16,11 +16,11 @@ class CreateTransactionService {
 
   public execute({ title, type, value }: Request): Transaction {
 
-    //**Invalidando transactions não sendo types income e outcome *******//
+    //**Invalidando transactions não sendo types do tipo income e outcome *******//
     if(!['income', 'outcome'].includes(type)) {
       throw new Error('Transaction not authorized. Invalid type');
     }
-    //**Invalidando transactions não sendo types income e outcome *******//
+    //**Invalidando transactions não sendo types do tipo income e outcome *******//
 
     //*****should not be able to create outcome transaction without a valid balance ****/
     const { total } = this.transactionsRepository.getBalance();
